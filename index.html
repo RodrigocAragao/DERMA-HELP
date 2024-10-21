@@ -3,7 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Derma Help</title>
+    <meta name="description" content="O aerossol de óleo de girassol é ideal para cicatrização, hidratação profunda e ação anti-inflamatória. Cuide da sua pele com nossa fórmula natural e eficaz.">
+    <meta name="keywords" content="óleo de girassol, cicatrização, anti-inflamatório, hidratação, pele saudável, tratamento da pele, hidratação profunda, óleo natural, cuidados com a pele, aerossol, dragon blood, óleo de rosa mosqueta, esqualano de oliva,óleo de uva, sangue de dragão">
+    <meta name="author" content="Óleo de Girassol - Cuidados com a Pele">
+    <meta property="og:title" content="Aerossol de Óleo de Girassol - Cicatrização, Anti-inflamatório e Hidratação">
+    <meta property="og:description" content="Descubra os benefícios do óleo de girassol em aerossol. Propriedades cicatrizantes, anti-inflamatórias e hidratantes para uma pele saudável e renovada.">
+    <meta property="og:image" content="URL_DA_IMAGEM_DO_PRODUTO">
+    <meta property="og:url" content="URL_DO_PRODUTO">
+    <meta property="og:type" content="product">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Aerossol de Óleo de Girassol - Cicatrização, Anti-inflamatório e Hidratação">
+    <meta name="twitter:description" content="Hidrate profundamente e ajude na cicatrização da pele com o poder natural do óleo de girassol em aerossol.">
+    <meta name="twitter:image" content="URL_DA_IMAGEM_DO_PRODUTO">
+    <link rel="icon" href="URL_DO_FAVICON" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -19,21 +33,19 @@
         <header>
             <div class="header-container">
                 <div class="header-logo">
-                   Derma Help
+                    Derma Help
                 </div>
-                <div class="menu-icon" onclick="toggleMenu()">
-                    &#9776; 
-                </div>
-                <nav class="header-cta-group">
-                    <button onclick="document.querySelector('.section-three').scrollIntoView({ behavior: 'smooth' });">Home</button>
-                    <button onclick="document.querySelector('.section-with-image').scrollIntoView({ behavior: 'smooth' });">Sobre</button>
-                    <button onclick="document.querySelector('.footer-container').scrollIntoView({ behavior: 'smooth' });">Contato</button>
-                </nav>
                 <div class="header-cta-right">
                     <a href="https://api.whatsapp.com/send?phone=+5562999678080&text=Olá, gostaria de saber mais sobre como ser um revendedor!" target="_blank">
-                        <button>Seja Revendedor</button>
+                        <button class="cta-button">Seja Revendedor</button>
                     </a>
+                    <div class="menu-icon">&#9776;</div> <!-- Ícone de sanduíche -->
                 </div>
+            </div>
+            <div class="dropdown-menu">
+                <a href="https://api.whatsapp.com/send?phone=+5562999678080&text=Olá, gostaria de saber mais sobre como ser um revendedor!" target="_blank">
+                    <button class="cta-button">Seja Revendedor</button>
+                </a>
             </div>
         </header>
         
@@ -51,7 +63,7 @@
 
             <!-- Terceira Secção -->
             <section class="section-three">
-                <img src="FOTO_oleo_de_girassol_QUADRADA_SITE-removebg-preview.png" alt="Imagem Grande">
+                <img src="dermaHelp-removebg-preview.png" alt="Imagem Grande">
                 <div class="text-content">
                     <h2>Derma Help - Óleo de girassol cicatrizante</h2>
                     <br>
