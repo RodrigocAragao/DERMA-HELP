@@ -42,14 +42,16 @@ main {
 
 
 
-/* Estilos básicos para o header */
+
 header {
     background-color: black;
     color: white;
     padding: 20px;
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    z-index: 1000; /* Colocar o header acima de outros elementos */
+    z-index: 1000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -57,90 +59,63 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative; /* Certifica que o menu seja posicionado corretamente */
 }
 
 .header-logo {
     font-size: 24px;
     font-weight: bold;
-    margin-right: 55px;
-}
-
-.header-cta-group a {
     color: white;
-    text-decoration: none;
-    margin: 0 10px;
 }
 
-.header-cta-group button {
-    background-color: transparent;
-    color: white;
-    border: none;
-    font-size: 16px;
-    padding: 10px 20px;
-}
-
-.header-cta-right button {
-    background-color: transparent;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 20px;
-    font-size: 16px;
-}
-
-.header-cta-right button:hover {
-    color: black;
-    background-color: white;
-}
-
-/* Ícone do menu sanduíche (escondido em ecrãs maiores) */
-.menu-icon {
-    display: none;
-    font-size: 30px;
-    cursor: pointer;
-}
-
-/* Layout normal para ecrãs grandes */
-.header-cta-group, .header-cta-right {
+.header-cta-right {
     display: flex;
     align-items: center;
 }
 
-/* Estilos para ecrãs menores */
+.cta-button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.menu-icon {
+    display: none; 
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+    margin-left: 10px;
+}
+
+
+.dropdown-menu {
+    display: none;
+    background-color: black;
+    padding: 10px;
+    text-align: center;
+    position: absolute;
+    top: 60px; 
+    width: 100%;
+    z-index: 999;
+}
+
 @media (max-width: 768px) {
+    .cta-button {
+        display: none; 
+    }
+
     .menu-icon {
-        display: block; /* Exibe o ícone hambúrguer */
+        display: block; 
     }
 
-    .header-cta-group, .header-cta-right {
-        display: none; /* Esconde os links e o botão no início */
-        flex-direction: column; /* Empilha os itens verticalmente */
-        background-color: #444;
-        width: 100%; /* O menu ocupa 100% da largura */
-        text-align: center;
-        position: absolute; /* Faz o menu aparecer abaixo do header */
-        top: 100%; /* Posiciona o menu logo abaixo do header */
-        left: 0;
-        z-index: 1000; /* Garante que o menu fique acima de outros conteúdos */
-    }
-
-    /* Menu aparece quando ativado */
-    .header-container.active .header-cta-group, 
-    .header-container.active .header-cta-right {
-        display: flex;
-        flex-direction: column; /* Itens alinhados verticalmente */
-    }
-
-    .header-cta-group a {
-        margin: 10px 0; /* Deixa os links alinhados verticalmente */
-    }
-
-    .header-cta-right {
-        margin-top: 10px;
+    .dropdown-menu {
+        display: none; 
     }
 }
+
 
 
 
