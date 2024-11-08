@@ -1,42 +1,140 @@
-// Seleciona todos os itens do acordeão
-const accordionItems = document.querySelectorAll('.accordion-item');
+let currentIndex = 0;
+const items = document.querySelectorAll('.carousel-item');
+const totalItems = items.length;
 
-accordionItems.forEach(item => {
-    const title = item.querySelector('.accordion-title');
+function moveSlide(step) {
+    // Remove a classe ativa do item atual
+    items[currentIndex].classList.remove('active');
 
-    title.addEventListener('click', () => {
-        // Fechar todos os outros itens
-        accordionItems.forEach(i => {
-            if (i !== item) {
-                i.classList.remove('active');
-            }
-        });
+    // Atualiza o índice
+    currentIndex = (currentIndex + step + totalItems) % totalItems;
 
-        // Alternar o estado do item atual (abrir/fechar)
-        item.classList.toggle('active');
-    });
-});
+    // Adiciona a classe ativa ao novo item
+    items[currentIndex].classList.add('active');
 
-function toggleMenu() {
-    const headerContainer = document.querySelector('.header-container');
-    headerContainer.classList.toggle('active');
+    // Mover o carrossel
+    const carousel = document.querySelector('.carousel');
+    const translateXValue = -currentIndex * 100; // Cada slide ocupa 100% da largura
+    carousel.style.transform = `translateX(${translateXValue}%)`;
 }
 
-// Fechar o menu ao clicar fora dele ou nos links/botões
-document.addEventListener('click', function(event) {
-    const headerContainer = document.querySelector('.header-container');
-    const menuIcon = document.querySelector('.menu-icon');
-    const menuItems = document.querySelectorAll('.header-cta-group a, .header-cta-right button');
 
-    // Se o clique for fora do header-container e não for no menu icon, fechar o menu
-    if (!headerContainer.contains(event.target) && !menuIcon.contains(event.target)) {
-        headerContainer.classList.remove('active');
-    }
-
-    // Fechar o menu ao clicar em qualquer link ou botão dentro do menu
-    menuItems.forEach(item => {
-        if (item.contains(event.target)) {
-            headerContainer.classList.remove('active');
+window.onload = function() {
+    // Gráfico de Resultados de Eficácia Clínica
+    const ctxEficacia = document.getElementById('graficoEficacia').getContext('2d');
+    new Chart(ctxEficacia, {
+        type: 'bar',
+        data: {
+            labels: ['1', '2'], // Números representando as categorias
+            datasets: [
+                {
+                    label: 'Melhora',
+                    data: [70, 75],
+                    backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                },
+                {
+                    label: 'Igual',
+                    data: [30, 25],
+                    backgroundColor: 'rgba(255, 168, 168, 0.7)',
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false, // Permite que a altura se ajuste de acordo com o canvas
+            indexAxis: 'y', // Exibe as barras horizontalmente
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    max: 100,
+                    ticks: {
+                        callback: (value) => value + '%',
+                    },
+                },
+                y: {
+                    ticks: {
+                        font: {
+                            size: 12
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Resultados de Eficácia Clínica',
+                    font: {
+                        size: 16,
+                    }
+                }
+            },
+            elements: {
+                bar: {
+                    barThickness: 25 // Reduz a espessura das barras para caber melhor
+                }
+            }
         }
     });
-});
+
+    // Gráfico de Apreciabilidade Cosmética
+    const ctx = document.getElementById('graficoAceitabilidade').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['1', '2', '3', '4', '5', '6', '7'], // Números representando as categorias
+            datasets: [
+                {
+                    label: 'Sim',
+                    data: [80, 60, 70, 75, 65, 85, 90],
+                    backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                },
+                {
+                    label: 'Não',
+                    data: [20, 40, 30, 25, 35, 15, 10],
+                    backgroundColor: 'rgba(255, 168, 168, 0.7)',
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false, // Permite que a altura se ajuste de acordo com o canvas
+            indexAxis: 'y',
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    max: 100,
+                    ticks: {
+                        callback: (value) => value + '%',
+                    },
+                },
+                y: {
+                    ticks: {
+                        font: {
+                            size: 12
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Avaliação de Aceitabilidade e Resultados Percebidos',
+                    font: {
+                        size: 16,
+                    }
+                }
+            },
+            elements: {
+                bar: {
+                    barThickness: 25 // Reduz a espessura das barras para caber melhor
+                }
+            }
+        }
+    });
+}
